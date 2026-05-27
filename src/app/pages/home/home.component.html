@@ -1,1 +1,83 @@
-<p>home works!</p>
+<app-nav-bar></app-nav-bar>
+
+<!-- ============================================================
+     HERO — full-screen video, headline bottom-left
+     ============================================================ -->
+<section class="hero">
+
+  <div class="hero__video-wrap">
+    <video #heroVideo class="hero__video" autoplay muted loop playsinline preload="metadata">
+      <source src="assets/videos/video.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__veil"></div>
+  </div>
+
+  <canvas #raysCanvas class="hero__canvas"></canvas>
+
+  <!-- Bottom-left: headline -->
+  <div class="hero__headline-wrap">
+    <h1 class="hero__headline">
+      <span class="hero__line" [class.hero__line--visible]="linesVisible">More</span>
+      <span class="hero__line hero__line--gold" [class.hero__line--visible]="linesVisible" style="transition-delay:0.12s">Strategy.</span>
+      <span class="hero__line" [class.hero__line--visible]="linesVisible" style="transition-delay:0.24s">More</span>
+      <span class="hero__line hero__line--gold" [class.hero__line--visible]="linesVisible" style="transition-delay:0.36s">Impact.</span>
+    </h1>
+  </div>
+
+  <!-- Bottom-right: CTA — pushed below headline on mobile -->
+  <div class="hero__cta-wrap" [class.hero__cta-wrap--visible]="linesVisible">
+    <a routerLink="/contact" class="hero__cta">WORK WITH US</a>
+    <div class="hero__cta-line"></div>
+  </div>
+
+  <div class="hero__scroll-dot" [class.hero__scroll-dot--visible]="linesVisible">
+    <span></span>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     MARQUEE STRIP
+     ============================================================ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-text">THE BEST BRANDS, CREATORS AND ATHLETES&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee-text">THE BEST BRANDS, CREATORS AND ATHLETES&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee-text">THE BEST BRANDS, CREATORS AND ATHLETES&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span class="marquee-text">THE BEST BRANDS, CREATORS AND ATHLETES&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     CLIENTS — single image (includes OUR CLIENTS title)
+     Place logos.webp at: src/assets/images/logos.webp
+     ============================================================ -->
+<section class="clients">
+  <img src="assets/images/logos.webp" alt="Our Clients" class="clients__image" />
+
+  <div class="clients__cta-wrap">
+    <a routerLink="/contact" class="clients__cta">GET STARTED</a>
+    <div class="clients__cta-line"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER — social icons bottom-left
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="site-footer__icons">
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="site-footer__icon-link">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="mailto:dsolisbarrantes@gmail.com" aria-label="Email" class="site-footer__icon-link">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M2 8l10 6 10-6"/>
+      </svg>
+    </a>
+  </div>
+</footer>
