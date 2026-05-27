@@ -1,0 +1,126 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000000;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  color: #ffffff;
+}
+
+.retro-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* --- EFECTO CINE RETRO / FILM GRAIN --- */
+.film-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  background-color: #000000;
+}
+
+/* Estilo del video optimizado para rendimiento gráfico */
+.film-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0.45; /* Bajamos la opacidad para que el grano sea sutil, elegante y no estorbe */
+
+  /* Truco de aceleración por hardware para eliminar congelamientos y parpadeos */
+  transform: translate(-50%, -50%) translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+/* Viñeta: Oscurece los bordes imitando un proyector antiguo */
+.film-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.85) 90%);
+  pointer-events: none;
+}
+
+/* --- ESTILOS DEL TEXTO --- */
+.content-wrapper {
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 10;
+}
+
+.title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #cccccc;
+  margin: 0;
+  max-width: 620px;
+}
+
+.footer-brand {
+  margin-top: 16px;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.name {
+  font-weight: 300;
+  color: #ffffff;
+}
+.divider {
+  color: #555555;
+  font-weight: 300;
+}
+.role {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Adaptabilidad móvil */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 1.05rem;
+  }
+  .footer-brand {
+    font-size: 1.3rem;
+  }
+  .retro-container {
+    padding: 0 6%;
+  }
+}

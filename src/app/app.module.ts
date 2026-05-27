@@ -6,18 +6,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PreviewComponent } from './pages/preview/preview.component';
 import { NavbarComponent } from './pages/nav-bar/nav-bar.component';
+import { RetroComponent } from './pages/retro/retro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    PreviewComponent
+    PreviewComponent,
+    RetroComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
