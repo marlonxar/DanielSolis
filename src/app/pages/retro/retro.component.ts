@@ -6,31 +6,44 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
   styleUrls: ['./retro.component.css'],
 })
 export class RetroComponent implements AfterViewInit {
-  // Capturamos el elemento #filmVideo del HTML
+  // 1. Tu referencia actual para el video de fondo (Film Grain)
   @ViewChild('filmVideo') filmVideo!: ElementRef<HTMLVideoElement>;
 
+  // 2. Nueva referencia para el video vertical del mockup (Instagram/Home)
+  @ViewChild('instagramVideo') instagramVideo!: ElementRef<HTMLVideoElement>;
+
   ngAfterViewInit(): void {
-    this.encenderVideo();
+    this.encenderVideos();
   }
 
-  encenderVideo() {
-    if (this.filmVideo && this.filmVideo.nativeElement) {
-      const video = this.filmVideo.nativeElement;
+  encenderVideos() {
+    // Inicializamos las referencias nativas de ambos elementos
+    const bgVideo = this.filmVideo?.nativeElement;
+    const mockVideo = this.instagramVideo?.nativeElement;
 
-      // Aseguramos por código que esté muteado (requisito obligatorio del navegador para auto-play)
-      video.muted = true;
-
-      // Forzamos la reproducción activa
-      video.play().catch((error) => {
+    // Ejecutamos la lógica de inicio para el video de fondo (Tu lógica original)
+    if (bgVideo) {
+      bgVideo.muted = true;
+      bgVideo.play().catch((error) => {
         console.warn(
-          'El navegador bloqueó momentáneamente el autoplay al cambiar de ruta:',
+          'El navegador bloqueó momentáneamente el autoplay del background:',
+          error,
+        );
+        setTimeout(() => bgVideo.play(), 100);
+      });
+    }
+
+    // Ejecutamos exactamente la misma lógica de fuerza para el nuevo video vertical
+    if (mockVideo) {
+      mockVideo.muted = true;
+      mockVideo.play().catch((error) => {
+        console.warn(
+          'El navegador bloqueó momentáneamente el autoplay del video vertical:',
           error,
         );
 
         // Intento secundario de respaldo en caso de latencia de carga
-        setTimeout(() => {
-          video.play();
-        }, 100);
+        setTimeout(() => mockVideo.play(), 100);
       });
     }
   }

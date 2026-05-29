@@ -1,25 +1,64 @@
+<app-nav-bar></app-nav-bar>
+
 <div class="retro-container">
   <div class="film-backdrop">
     <video #filmVideo autoplay muted loop playsinline class="film-video">
       <source src="assets/videos/film-grain.mp4" type="video/mp4" />
     </video>
-
     <div class="film-vignette"></div>
   </div>
 
-  <div class="content-wrapper">
-    <h1 class="title">
-      Estrategia, Producción y Posicionamiento para tu marca.
-    </h1>
-    <p class="subtitle">
-      Un sistema mensual de short-form content con dirección creativa para
-      fortalecer tu identidad visual en redes sociales.
-    </p>
+  <div class="main-content">
+    <div class="content-wrapper">
+      <h1 class="title">
+        Estrategia, Producción y Posicionamiento para tu marca.
+      </h1>
+      <p class="subtitle">
+        Un sistema mensual de short-form content con dirección creativa para
+        fortalecer tu identidad visual en redes sociales.
+      </p>
 
-    <div class="footer-brand">
-      <span class="name">Daniel Solís</span>
-      <span class="divider">—</span>
-      <span class="role">Creative Marketer</span>
+      <div class="footer-brand">
+        <span class="name">Daniel Solís</span>
+        <span class="divider">—</span>
+        <span class="role">Creative Marketer</span>
+      </div>
+    </div>
+
+    <div class="video-mockup-wrapper">
+      <div class="phone-frame">
+        <div class="phone-glow-left"></div>
+        <div class="phone-glow-right"></div>
+        <div class="phone-screen">
+          <video
+            #instagramVideo
+            autoplay
+            muted="true"
+            [muted]="true"
+            loop
+            playsinline
+            class="instagram-video"
+          >
+            <source src="assets/videos/home.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span class="marquee-text"
+        >THE BEST BRANDS, CREATORS AND ATHLETES&nbsp;&nbsp;·&nbsp;&nbsp;</span
+      >
+      <span class="marquee-text"
+        >THE BEST BRANDS, CREATORS AND ATHLETES&nbsp;&nbsp;·&nbsp;&nbsp;</span
+      >
+      <span class="marquee-text"
+        >THE BEST BRANDS, CREATORS AND ATHLETES&nbsp;&nbsp;·&nbsp;&nbsp;</span
+      >
+      <span class="marquee-text"
+        >THE BEST BRANDS, CREATORS AND ATHLETES&nbsp;&nbsp;·&nbsp;&nbsp;</span
+      >
     </div>
   </div>
 </div>
