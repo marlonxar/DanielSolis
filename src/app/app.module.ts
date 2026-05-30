@@ -7,6 +7,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { PreviewComponent } from './pages/preview/preview.component';
 import { NavbarComponent } from './pages/nav-bar/nav-bar.component';
 import { RetroComponent } from './pages/retro/retro.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
+import { PortafolioComponent } from './pages/portafolio/portafolio.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { RetroComponent } from './pages/retro/retro.component';
     NavbarComponent,
     PreviewComponent,
     RetroComponent,
+    ContactoComponent,
+    PortafolioComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

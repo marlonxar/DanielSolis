@@ -1,0 +1,226 @@
+<app-nav-bar></app-nav-bar>
+
+<!-- Film backdrop -->
+<div class="film-backdrop" aria-hidden="true">
+    <video autoplay muted loop playsinline class="film-video">
+      <source src="assets/videos/film-grain.mp4" type="video/mp4" />
+    </video>
+    <div class="film-vignette"></div>
+  </div>
+  
+  <main class="portfolio-page" id="main-content">
+  
+    <!-- Header -->
+    <header class="portfolio-header">
+      <div class="header-inner">
+        <span class="portfolio-eyebrow">Daniel Solís — Creative Marketer</span>
+        <h1 class="portfolio-title">
+          <span class="title-word">PORTA</span>
+          <span class="title-word title-word--ghost">FOLIO</span>
+        </h1>
+        <div class="header-meta">
+          <p class="portfolio-subtitle">Dirección creativa · Producción · Estrategia</p>
+          <span class="portfolio-count">{{ projects.length }} proyectos</span>
+        </div>
+      </div>
+      <div class="header-rule" aria-hidden="true"></div>
+    </header>
+  
+    <!-- Grid -->
+    <section class="projects-section" aria-label="Proyectos">
+      <ul class="projects-grid" role="list">
+        <li
+          class="project-card"
+          *ngFor="let project of projects; let i = index"
+          role="listitem"
+          tabindex="0"
+          [attr.aria-label]="'Ver proyecto: ' + project.name"
+          (click)="openProject(project)"
+          (keydown.enter)="openProject(project)"
+          (keydown.space)="openProject(project)"
+        >
+          <span class="card-index" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+  
+          <div class="card-logo-zone">
+            <img
+              [src]="project.logo"
+              [alt]="project.name + ' logo'"
+              class="card-logo"
+              loading="lazy"
+              width="200"
+              height="100"
+            />
+          </div>
+  
+          <div class="card-cta" aria-hidden="true">
+            <span class="card-cta__label">Ver proyecto</span>
+            <svg class="card-cta__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+  
+          <div class="card-info">
+            <div class="card-info__left">
+              <span class="card-name">{{ project.name }}</span>
+              <span class="card-tagline">{{ project.tagline }}</span>
+            </div>
+            <span class="card-year">{{ project.year }}</span>
+          </div>
+  
+          <div class="card-sweep" aria-hidden="true"></div>
+        </li>
+      </ul>
+    </section>
+  
+  </main>
+  
+  <!-- ============================================================
+       POPUP — Split layout desktop / bottom sheet mobile
+       ============================================================ -->
+  <div
+    class="project-popup"
+    [class.project-popup--open]="activeProject !== null && !isClosing"
+    [class.project-popup--closing]="isClosing"
+    role="dialog"
+    [attr.aria-modal]="activeProject !== null"
+    [attr.aria-label]="activeProject ? 'Proyecto: ' + activeProject.name : null"
+    [attr.aria-hidden]="activeProject === null"
+    (click)="onOverlayClick($event)"
+  >
+    <div class="popup-sheet" *ngIf="activeProject">
+  
+      <!-- LEFT: Info panel -->
+      <div class="popup-info-panel">
+  
+        <!-- Close button -->
+        <button
+          class="popup-close"
+          (click)="closeProject()"
+          aria-label="Cerrar proyecto"
+          type="button"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          <span>ESC</span>
+        </button>
+  
+        <!-- Scrollable info -->
+        <div class="popup-info-scroll">
+  
+          <div class="popup-header">
+            <img
+              [src]="activeProject.logo"
+              [alt]="activeProject.name + ' logo'"
+              class="popup-logo"
+            />
+            <span class="popup-year-badge">{{ activeProject.year }}</span>
+          </div>
+  
+          <div class="popup-title-block">
+            <h2 class="popup-title">{{ activeProject.name }}</h2>
+            <p class="popup-tagline">{{ activeProject.tagline }}</p>
+          </div>
+  
+          <div class="popup-rule" aria-hidden="true"></div>
+  
+          <p class="popup-description">{{ activeProject.description }}</p>
+  
+          <div class="popup-footer-space"></div>
+  
+        </div>
+      </div>
+  
+      <!-- RIGHT: Media panel -->
+      <div class="popup-media-panel">
+        <div class="popup-media" role="region" aria-label="Galería de medios">
+  
+          <div
+            class="slider-track"
+            [style.transform]="'translateX(-' + (sliderIndex * 100) + '%)'"
+          >
+            <div
+              class="slider-slide"
+              *ngFor="let media of activeProject.media; let i = index"
+              [attr.aria-hidden]="i !== sliderIndex"
+            >
+              <video
+                *ngIf="media.type === 'video'"
+                [src]="media.src"
+                autoplay
+                muted
+                loop
+                playsinline
+                class="slide-media"
+                [attr.aria-label]="activeProject.name + ' video ' + (i + 1)"
+              ></video>
+              <img
+                *ngIf="media.type === 'image'"
+                [src]="media.src"
+                [alt]="activeProject.name + ' imagen ' + (i + 1)"
+                class="slide-media"
+                loading="lazy"
+              />
+            </div>
+          </div>
+  
+          <button
+            class="slider-btn slider-btn--prev"
+            (click)="prevSlide()"
+            [disabled]="sliderIndex === 0"
+            aria-label="Media anterior"
+            type="button"
+            *ngIf="activeProject.media.length > 1"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+  
+          <button
+            class="slider-btn slider-btn--next"
+            (click)="nextSlide()"
+            [disabled]="activeProject && sliderIndex === activeProject.media.length - 1"
+            aria-label="Media siguiente"
+            type="button"
+            *ngIf="activeProject.media.length > 1"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+  
+          <div
+            class="slider-counter"
+            aria-live="polite"
+            aria-atomic="true"
+            *ngIf="activeProject.media.length > 1"
+          >
+            {{ sliderIndex + 1 }}&thinsp;/&thinsp;{{ activeProject.media.length }}
+          </div>
+  
+          <div
+            class="slider-dots"
+            role="tablist"
+            aria-label="Seleccionar media"
+            *ngIf="activeProject.media.length > 1"
+          >
+            <button
+              class="slider-dot"
+              *ngFor="let m of activeProject.media; let i = index"
+              [class.is-active]="i === sliderIndex"
+              (click)="goToSlide(i)"
+              role="tab"
+              [attr.aria-selected]="i === sliderIndex"
+              [attr.aria-label]="'Media ' + (i + 1)"
+              type="button"
+            ></button>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </div>

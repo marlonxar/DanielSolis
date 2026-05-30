@@ -25,15 +25,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   // Left side — 2 links (mirrors leeway layout: 2 left, 2 right of logo)
   leftLinks: NavLink[] = [
-    { label: 'HOME',      path: '/',          exact: true  },
-    { label: 'PREVIEW', path: '/preview', exact: false },
+    { label: 'INICIO',      path: '/',          exact: true  },
+    { label: 'PORTAFOLIO', path: '/portafolio', exact: false },
+    { label: 'CONTACTO', path: '/contacto', exact: false }
   ];
 
   // Right side — 2 links (desktop hidden; all shown in mobile drawer)
-  rightLinks: NavLink[] = [
-    { label: 'ABOUT',   path: '/about',   exact: false },
-    { label: 'CONTACT', path: '/contact', exact: false },
-  ];
+  rightLinks: NavLink[] = [];
 
   // All links for mobile drawer
   get allLinks(): NavLink[] {
