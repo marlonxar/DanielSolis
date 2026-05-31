@@ -9,6 +9,7 @@ import { NavbarComponent } from './pages/nav-bar/nav-bar.component';
 import { RetroComponent } from './pages/retro/retro.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { PortafolioComponent } from './pages/portafolio/portafolio.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PortafolioComponent } from './pages/portafolio/portafolio.component';
     RetroComponent,
     ContactoComponent,
     PortafolioComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

@@ -53,15 +53,30 @@
 .contact-page {
   position: relative;
   z-index: 1;
+  /* Hardcoded 80px como fallback + la variable — cubre ambos casos */
+  padding-top: 80px;
   padding-top: var(--nav-h);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  /* Garantía extra en mobile por si el navbar crece con el drawer */
+  @media (max-width: 768px) {
+    padding-top: 80px;
+  }
 }
 
 /* ── Header ─────────────────────────────────────────────────── */
 .contact-header {
   padding: 5rem 6% 0;
+
+  @media (max-width: 768px) {
+    padding: 3rem 6% 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 5% 0;
+  }
 }
 
 .header-inner {
@@ -176,6 +191,10 @@
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding: 0 5% 4rem;
+  }
 }
 
 .contact-grid {
@@ -201,6 +220,10 @@
   @media (max-width: 900px) {
     border-right: none;
     padding: 2.5rem 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.4rem;
   }
 }
 
@@ -372,6 +395,10 @@
     padding: 2.5rem 2rem;
     gap: 1.6rem;
   }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.4rem;
+  }
 }
 
 .cta-eyebrow {
@@ -422,7 +449,6 @@
   }
 }
 
-/* Primary — filled gold sweep */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -463,7 +489,6 @@
   &:hover {
     color: var(--black);
     border-color: var(--gold);
-
     &::before { transform: translateX(0); }
     svg { transform: translateX(4px); }
   }
@@ -478,7 +503,6 @@
   }
 }
 
-/* Secondary — ghost */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -495,10 +519,7 @@
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    color 0.28s ease,
-    border-color 0.28s ease,
-    background 0.28s ease;
+  transition: color 0.28s ease, border-color 0.28s ease, background 0.28s ease;
 
   svg { flex-shrink: 0; transition: color 0.28s ease; }
 
@@ -519,7 +540,6 @@
   }
 }
 
-/* Trust strip */
 .cta-trust {
   display: flex;
   align-items: center;
@@ -548,7 +568,6 @@
   svg { color: var(--gold); flex-shrink: 0; }
 }
 
-/* Deco text background */
 .cta-deco {
   position: absolute;
   right: -2rem;
