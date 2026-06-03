@@ -10,6 +10,7 @@
   --text-muted: rgba(255, 255, 255, 0.35);
   --text-dim:   rgba(255, 255, 255, 0.18);
   --nav-h:      80px;
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
 
   display: block;
   background: var(--black);
@@ -18,7 +19,6 @@
   font-family: 'DM Sans', sans-serif;
 }
 
-/* ── Film backdrop ──────────────────────────────────────────── */
 .film-backdrop {
   position: fixed;
   inset: 0;
@@ -49,17 +49,19 @@
     linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.5) 100%);
 }
 
-/* ── Page ───────────────────────────────────────────────────── */
 .portfolio-page {
   position: relative;
   z-index: 1;
+  padding-top: 80px;
   padding-top: var(--nav-h);
   min-height: 100vh;
 }
 
-/* ── Header ─────────────────────────────────────────────────── */
 .portfolio-header {
   padding: 5rem 6% 0;
+
+  @media (max-width: 768px) { padding: 3rem 6% 0; }
+  @media (max-width: 480px) { padding: 2rem 5% 0; }
 }
 
 .header-inner {
@@ -77,8 +79,8 @@
 }
 
 .portfolio-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(5.5rem, 16vw, 13rem);
+  font-family: 'Druk Wide', sans-serif;
+  font-size: 5rem;
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 0.88;
@@ -137,7 +139,6 @@
   opacity: 0.5;
 }
 
-/* ── Grid ───────────────────────────────────────────────────── */
 .projects-section {
   position: relative;
   z-index: 1;
@@ -157,7 +158,6 @@
   }
 }
 
-/* ── Card ───────────────────────────────────────────────────── */
 .project-card {
   position: relative;
   cursor: pointer;
@@ -204,7 +204,6 @@
   align-items: center;
   justify-content: center;
   min-height: 220px;
-  padding: 3.5rem 2.5rem 2.5rem;
   overflow: hidden;
 
   &::before {
@@ -223,13 +222,12 @@
 .card-logo {
   position: relative;
   z-index: 1;
-  max-width: 200px;
-  max-height: 100px;
+  max-width: 420px;
+  max-height: 240px;
   width: 100%;
   height: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.7;
+  opacity: 0.75;
   transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 
   .project-card:hover &,
@@ -346,9 +344,6 @@
   .project-card:focus-visible & { width: 100%; }
 }
 
-/* ============================================================
-   POPUP — Centered modal on desktop / bottom sheet on mobile
-   ============================================================ */
 .project-popup {
   position: fixed;
   inset: 0;
@@ -356,8 +351,6 @@
   pointer-events: none;
   background: transparent;
   transition: background 0.45s ease, backdrop-filter 0.45s ease;
-
-  /* Desktop: center the sheet */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -375,16 +368,13 @@
     -webkit-backdrop-filter: blur(0px);
   }
 
-  /* Mobile: anchor to bottom */
   @media (max-width: 700px) {
     align-items: flex-end;
     justify-content: stretch;
   }
 }
 
-/* ── Sheet ──────────────────────────────────────────────────── */
 .popup-sheet {
-  /* Desktop: centered modal */
   position: relative;
   width: min(1200px, 94vw);
   height: min(88vh, 780px);
@@ -394,7 +384,6 @@
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 6px;
   overflow: hidden;
-
   transform: scale(0.94) translateY(16px);
   opacity: 0;
   transition:
@@ -414,19 +403,16 @@
       opacity 0.22s ease;
   }
 
-  /* ── Mobile: full-height bottom sheet ────────────────────── */
   @media (max-width: 700px) {
-    /* Ocupa todo el ancho y casi toda la altura de pantalla */
     width: 100%;
-    height: 95svh;            /* svh = small viewport height, evita el issue del address bar */
+    height: 95svh;
     max-height: 95svh;
-    flex-direction: column;   /* video arriba, info abajo — orden natural */
+    flex-direction: column;
     border-radius: 16px 16px 0 0;
     border-left: none;
     border-right: none;
     border-bottom: none;
-    overflow: hidden;         /* el scroll va dentro de cada panel */
-
+    overflow: hidden;
     transform: translateY(100%);
     opacity: 1;
 
@@ -442,26 +428,24 @@
   }
 }
 
-/* ── Left panel (desktop) / Bottom panel (mobile): info ─────── */
 .popup-info-panel {
   position: relative;
   flex: 1;
   min-width: 0;
-  min-height: 0;           /* crucial: permite que flex hijo haga scroll */
+  min-height: 0;
   display: flex;
   flex-direction: column;
   background: var(--surface);
   border-right: 1px solid rgba(255,255,255,0.05);
 
   @media (max-width: 700px) {
-    flex: 1;               /* ocupa el espacio restante después del video */
+    flex: 1;
     min-height: 0;
     border-right: none;
     border-top: 1px solid rgba(255,255,255,0.07);
   }
 }
 
-/* Close button */
 .popup-close {
   position: absolute;
   top: 1.1rem;
@@ -498,14 +482,13 @@
   }
 }
 
-/* Scrollable info — THIS is the scrollable zone */
 .popup-info-scroll {
   flex: 1;
-  min-height: 0;           /* necesario para que overflow-y funcione en flex */
+  min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;   /* scroll momentum en iOS */
-  overscroll-behavior: contain;        /* evita que el scroll "escape" al body */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   padding: 4.5rem 2.5rem 2rem 2.5rem;
   scroll-behavior: smooth;
   scrollbar-width: thin;
@@ -518,7 +501,7 @@
   }
 
   @media (max-width: 700px) {
-    padding: 1.2rem 1.4rem 2rem;   /* sin top padding extra, el close está encima del video */
+    padding: 1.4rem 1.6rem 2rem;
   }
 }
 
@@ -530,13 +513,12 @@
 }
 
 .popup-logo {
-  max-width: 120px;
-  max-height: 44px;
+  max-width: 240px;
+  max-height: 100px;
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.75;
+  opacity: 0.85;
   display: block;
 }
 
@@ -555,49 +537,50 @@
 }
 
 .popup-title-block {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
 .popup-title {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
-  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   color: #fff;
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.6rem;
   line-height: 1;
 }
 
 .popup-tagline {
   font-size: 0.68rem;
-  font-weight: 300;
-  letter-spacing: 0.16em;
+  font-weight: 400;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--gold);
   margin: 0;
+  opacity: 0.85;
 }
 
 .popup-rule {
   height: 1px;
   background: linear-gradient(to right, var(--gold) 0%, rgba(212,160,23,0.08) 55%, transparent 100%);
   opacity: 0.45;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.6rem;
 }
 
 .popup-description {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 300;
-  line-height: 1.95;
-  color: rgba(255,255,255,0.5);
+  line-height: 2;
+  color: rgba(255,255,255,0.58);
   margin: 0;
+  letter-spacing: 0.01em;
 }
 
 .popup-footer-space {
   height: 1.5rem;
 }
 
-/* ── Right panel (desktop) / Top panel (mobile): media ──────── */
 .popup-media-panel {
   flex: 0 0 auto;
   width: 380px;
@@ -605,17 +588,14 @@
   display: flex;
   align-items: stretch;
 
-  @media (max-width: 1000px) {
-    width: 300px;
-  }
+  @media (max-width: 1000px) { width: 300px; }
 
   @media (max-width: 700px) {
-    /* En mobile va arriba: altura fija tipo 16:9 pero más corta */
     width: 100%;
-    height: 42vw;            /* proporcional al ancho, no demasiado alto */
+    height: 42vw;
     min-height: 200px;
     max-height: 260px;
-    flex: 0 0 auto;          /* no crece ni encoge */
+    flex: 0 0 auto;
   }
 }
 

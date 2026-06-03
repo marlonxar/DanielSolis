@@ -32,7 +32,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'fenix',
       name: 'Fénix Aduanal',
       year: '2026',
-      logo: 'assets/images/fenixLogo.png',
+      logo: 'assets/images/FenixAduanal.png',
       tagline: 'Aniversario 4 años · Video Corporativo',
       description:
         'La narrativa inicia con una llegada en helicóptero del fundador de la empresa, estableciendo inmediatamente una sensación de liderazgo, escala y autoridad. A partir de ahí, el video se transforma en una experiencia visual de alta intensidad que recorre toda la operación de Fénix Aduanal, desde contenedores y procesos logísticos hasta el ritmo acelerado del día a día en oficina, utilizando edición dinámica, tomas cinematográficas y una ejecución diseñada para mantener tensión e impacto en cada segundo.',
@@ -44,7 +44,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'gmb',
       name: 'Grupo Motores Británicos',
       year: '2026',
-      logo: 'assets/images/gmbLogo.png',
+      logo: 'assets/images/GMB.png',
       tagline: 'Land Rover · Can-Am · Sea-Doo',
       description:
         'Para Land Rover, desarrollamos contenido orientado hacia el lujo, sofisticación y experiencia premium, utilizando visuales más limpios y elegantes que refuerzan el posicionamiento exclusivo de la marca. En contraste, el contenido para Can-Am y Sea-Doo se enfoca en adrenalina, velocidad y aventura, creando piezas dinámicas diseñadas para transmitir energía, movimiento y estilo de vida outdoor.',
@@ -57,7 +57,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'golden-pacific',
       name: 'Golden Pacific',
       year: '2026',
-      logo: 'assets/images/goldenPacificLogo.png',
+      logo: 'assets/images/GoldenPacific.png',
       tagline: 'Snacks · Lifestyle Tropical · Costa Rica',
       description:
         'A través de contenido short-form, campañas visuales y storytelling enfocado en lifestyle tropical, el objetivo ha sido diferenciar la marca más allá del producto, creando una conexión emocional con consumidores jóvenes mediante una estética fresca, energética y auténtica.',
@@ -70,7 +70,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'fitbros',
       name: 'FITBROS Gymwear',
       year: '2026',
-      logo: 'assets/images/fitbrosLogo.png',
+      logo: 'assets/images/Fitbros.png',
       tagline: 'Fitness · Cultura · Costa Rica',
       description:
         'Combinando una dirección visual agresiva con edición rápida y una estética inspirada en el contenido deportivo de alto rendimiento, cada producción busca transmitir energía real: entrenamientos, movimiento, disciplina y actitud.',
@@ -82,7 +82,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'foodstyling',
       name: 'Food Styling',
       year: '2026',
-      logo: 'assets/images/foodStylingLogo.png',
+      logo: 'assets/images/FoodStyle.png',
       tagline: 'Gastronomía · Contenido Visual Premium',
       description:
         'El enfoque va más allá de simplemente mostrar comida: cada escena es diseñada para generar antojo inmediato y elevar la percepción de calidad de la marca a través de contenido premium optimizado para plataformas digitales.',
@@ -94,7 +94,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'real-estate',
       name: 'Real Estate',
       year: '2026',
-      logo: 'assets/images/realEstateLogo.png',
+      logo: 'assets/images/RealEstate.png',
       tagline: 'Bienes Raíces · Lujo · Costa Rica',
       description:
         'A través de visuales cinematográficos, movimientos de cámara fluidos y una dirección enfocada en iluminación, amplitud y detalle arquitectónico, el contenido busca transmitir exclusividad, tranquilidad y conexión con el entorno natural.',
@@ -106,7 +106,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'podcast',
       name: 'Podcast Clips',
       year: '2026',
-      logo: 'assets/images/podcastLogo.png',
+      logo: 'assets/images/Podcast.png',
       tagline: 'Storytelling · Marcas · Contenido Orgánico',
       description:
         'Este formato se ha convertido en una herramienta clave de storytelling para diferentes marcas, permitiendo comunicar visión, procesos y personalidad de una manera mucho más cercana y humana.',
@@ -118,7 +118,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'monkey-box',
       name: 'Monkey Box',
       year: '2026',
-      logo: 'assets/images/monkeyBoxLogo.png',
+      logo: 'assets/images/MonkeyBox.png',
       tagline: 'Logística · Contenido Digital · Tendencias',
       description:
         'La estrategia combina videos educativos, contenido comparativo y piezas más orientadas a entretenimiento, utilizando edición rápida, storytelling directo y una línea visual limpia que mantiene el balance entre claridad y retención de audiencia.',
@@ -133,7 +133,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'fashion',
       name: 'Fashion',
       year: '2026',
-      logo: 'assets/images/fashionLogo.png',
+      logo: 'assets/images/Fashion.png',
       tagline: 'Moda · Lifestyle · DLabutik',
       description:
         'A través de visuales limpios, dirección dinámica y una línea cinematográfica inspirada en fashion content, el objetivo ha sido elevar la presencia digital de la marca mientras se crea contenido diseñado para captar atención rápidamente.',
@@ -145,7 +145,7 @@ export class PortafolioComponent implements OnDestroy {
       id: 'eventos',
       name: 'Eventos',
       year: '2026',
-      logo: 'assets/images/eventosLogo.png',
+      logo: 'assets/images/PartiesEvents.png',
       tagline: 'Eventos · Fiestas · Crowd Energy',
       description:
         'A través de visuales cinematográficos, edición dinámica y tomas enfocadas en crowd reaction, iluminación y movimiento, cada pieza busca transmitir la intensidad del momento.',
