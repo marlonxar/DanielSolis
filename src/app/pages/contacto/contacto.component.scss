@@ -94,8 +94,8 @@
 }
 
 .contact-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(5.5rem, 16vw, 13rem);
+  font-family: 'Druk Wide', sans-serif;
+  font-size: 5rem;
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 0.88;
@@ -199,7 +199,7 @@
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: 1fr 380px;
   border-top: 1px solid var(--border);
   border-left: 1px solid var(--border);
 

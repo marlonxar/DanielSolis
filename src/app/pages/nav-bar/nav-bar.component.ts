@@ -4,8 +4,6 @@ import {
   OnDestroy,
   HostListener,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 interface NavLink {
   label: string;
