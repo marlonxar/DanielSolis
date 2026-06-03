@@ -52,7 +52,6 @@
 .portfolio-page {
   position: relative;
   z-index: 1;
-  padding-top: 80px;
   padding-top: var(--nav-h);
   min-height: 100vh;
 }
@@ -222,8 +221,8 @@
 .card-logo {
   position: relative;
   z-index: 1;
-  max-width: 420px;
-  max-height: 240px;
+  max-width: 85%;
+  max-height: 320px;
   width: 100%;
   height: auto;
   object-fit: contain;
@@ -407,7 +406,7 @@
     width: 100%;
     height: 95svh;
     max-height: 95svh;
-    flex-direction: column;
+    flex-direction: column-reverse;
     border-radius: 16px 16px 0 0;
     border-left: none;
     border-right: none;
@@ -443,7 +442,14 @@
     min-height: 0;
     border-right: none;
     border-top: 1px solid rgba(255,255,255,0.07);
+    z-index: 1;
   }
+}
+
+.slide-media--iframe {
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
 }
 
 .popup-close {
@@ -480,6 +486,35 @@
     outline: 2px solid var(--gold);
     outline-offset: 2px;
   }
+
+  @media (max-width: 700px) {
+    // En mobile el close queda debajo de los slider-mobile-controls,
+    // así que lo posicionamos relativo al info panel normal
+    top: 0.85rem;
+    left: 0.85rem;
+  }
+}
+
+// Barra de controles pegada justo debajo del video en mobile
+.slider-mobile-controls {
+  display: none;
+
+  @media (max-width: 700px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+    gap: 0.5rem;
+    order: -1; // lo empuja al tope del flex column del info panel
+  }
+}
+
+.slider-counter-mobile {
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.4);
 }
 
 .popup-info-scroll {
@@ -501,7 +536,7 @@
   }
 
   @media (max-width: 700px) {
-    padding: 1.4rem 1.6rem 2rem;
+    padding: 1rem 1.6rem 2rem; // sin padding-top extra, el close ya tiene su espacio
   }
 }
 
@@ -509,15 +544,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.6rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 700px) {
+    margin-top: 2.5rem; // espacio para el botón close absolute
+  }
 }
 
 .popup-logo {
-  max-width: 240px;
-  max-height: 100px;
+  max-width: 85%;
+  max-height: 320px;
   width: auto;
   height: auto;
   object-fit: contain;
+  filter: brightness(0) invert(1);
   opacity: 0.85;
   display: block;
 }
@@ -534,6 +574,12 @@
   text-transform: uppercase;
   background: rgba(212,160,23,0.05);
   white-space: nowrap;
+  margin-left: auto;
+
+  @media (max-width: 700px) {
+    margin-left: 0;
+    align-self: flex-start;
+  }
 }
 
 .popup-title-block {
@@ -592,10 +638,11 @@
 
   @media (max-width: 700px) {
     width: 100%;
-    height: 42vw;
-    min-height: 200px;
-    max-height: 260px;
+    height: 56vw;
+    min-height: 240px;
+    max-height: 320px;
     flex: 0 0 auto;
+    z-index: 2;
   }
 }
 
@@ -625,35 +672,43 @@
 }
 
 .slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  width: 36px;
-  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 36px;
+  height: 36px;
   background: rgba(0,0,0,0.52);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 3px;
   color: rgba(255,255,255,0.75);
   cursor: pointer;
   transition: background 0.2s, color 0.2s, opacity 0.3s;
+  flex-shrink: 0;
 
   &:hover { background: rgba(0,0,0,0.85); color: #fff; }
   &:focus-visible { outline: 2px solid var(--gold); }
-  &:disabled { opacity: 0; pointer-events: none; }
+  &:disabled { opacity: 0.2; pointer-events: none; }
 
-  &--prev { left: 0.5rem; }
-  &--next { right: 0.5rem; }
+  &--desktop {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+
+    &.slider-btn--prev { left: 0.5rem; }
+    &.slider-btn--next { right: 0.5rem; }
+
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
 }
 
 .slider-counter {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  z-index: 10;
+  z-index: 20;
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   color: rgba(255,255,255,0.5);
@@ -661,16 +716,28 @@
   padding: 3px 8px;
   border-radius: 2px;
   border: 1px solid rgba(255,255,255,0.05);
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 }
 
 .slider-dots {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 6px;
-  z-index: 10;
+  align-items: center;
+
+  &--desktop {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
 }
 
 .slider-dot {
