@@ -20,7 +20,7 @@
   background: #000000;
 }
 
-/* --- SECCIONES ESTRUCTURALES CON DISEÑO DE FONDO ASIMÉTRICO --- */
+/* --- SECCIONES ESTRUCTURALES ASIMÉTRICAS --- */
 
 .hero-section {
   width: 100%;
@@ -28,7 +28,6 @@
   display: flex;
   align-items: center;
   position: relative;
-  /* HERO: Llamas nativas naciendo desde abajo en tamaño estándar */
   background-image: url("/assets/images/back-flames.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,8 +42,6 @@
   padding: 100px 8%;
   box-sizing: border-box;
   position: relative;
-  /* PROPÓSITO: Súper Zoom (140%) + Inversión Horizontal.
-     Las llamas se ven gigantes, más abstractas y se recuestan a la derecha */
   background-image: url("/assets/images/back-flames.png");
   background-repeat: no-repeat;
   background-size: 140% auto;
@@ -59,9 +56,6 @@
   padding: 100px 8%;
   box-sizing: border-box;
   position: relative;
-  /* FRAMEWORK: Inversión Vertical (Efecto espejo de cabeza).
-     Hacemos un pseudo-elemento para poder usar transform: scaleY(-1) sin afectar los textos internos,
-     logrando que las llamas caigan sutilmente desde el techo visual de la sección */
 }
 .framework-section::before {
   content: "";
@@ -74,11 +68,70 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
-  transform: scaleY(-1); /* Invierte el fuego de cabeza hacia abajo */
+  transform: scaleY(-1);
   z-index: 1;
   pointer-events: none;
 }
 
+/* --- NUEVA SECCIÓN: ESTILOS PARA LAS MARCAS --- */
+.brands-section {
+  width: 100%;
+  padding: 80px 8%;
+  background-color: #050505; /* Un tono sutilmente diferente al negro absoluto para dar volumen */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+}
+
+.brands-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.brands-subtitle {
+  font-family:
+    Arial Black,
+    "Arial Bold",
+    Gadget,
+    sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ebd105; /* El color acento amarillo para mantener coherencia */
+  margin: 0;
+  text-align: center;
+}
+
+.brands-grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brands-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.75; /* Estilo elegante integrado al fondo */
+  filter: grayscale(30%);
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
+}
+
+.brands-image:hover {
+  opacity: 1;
+  filter: grayscale(0%); /* Brilla por completo al pasar el cursor */
+}
+
+/* --- RESTO DE LOS COMPONENTES ESTILOS --- */
 .main-content {
   width: 100%;
   flex: 1;
@@ -91,7 +144,6 @@
   gap: 40px;
 }
 
-/* --- FONDO FILMATICO GLOBAL --- */
 .film-backdrop {
   position: absolute;
   top: 0;
@@ -126,7 +178,6 @@
   pointer-events: none;
 }
 
-/* --- PANTALLA 1: HERO TEXTO --- */
 .content-wrapper {
   flex: 1;
   max-width: 700px;
@@ -185,7 +236,6 @@
   color: #ffffff;
 }
 
-/* --- MOCKUP DE TELÉFONO Y VIDEO --- */
 .video-mockup-wrapper {
   flex: 1;
   display: flex;
@@ -226,7 +276,6 @@
   object-fit: cover;
 }
 
-/* --- RESPLANDORES LATERALES (FLAMES INDIVIDUALES AGRANDADAS) --- */
 .phone-glow-left,
 .phone-glow-right {
   position: absolute;
@@ -254,7 +303,6 @@
   transform: translateY(-50%) scaleX(-1);
 }
 
-/* --- PANTALLA 2: SECCIÓN PROPOSITO --- */
 .purpose-container {
   width: 100%;
   display: flex;
@@ -323,7 +371,6 @@
   color: #ffffff;
 }
 
-/* --- PANTALLA 3: SECCIÓN FRAME WORK --- */
 .framework-container {
   width: 100%;
   display: flex;
@@ -405,7 +452,6 @@
   text-transform: capitalize;
 }
 
-/* --- MARQUEE SLIDER --- */
 .marquee-strip {
   display: block;
   width: 100%;
@@ -451,7 +497,8 @@
     padding: 60px 4%;
   }
   .purpose-section,
-  .framework-section {
+  .framework-section,
+  .brands-section {
     padding: 80px 4%;
   }
   .phone-frame {
@@ -473,7 +520,6 @@
     height: auto;
   }
 
-  /* Limpiamos e igualamos los fondos en móviles para legibilidad */
   .hero-section,
   .purpose-section {
     background-size: cover !important;
@@ -482,6 +528,10 @@
   .framework-section::before {
     background-size: cover !important;
     background-position: center center !important;
+  }
+
+  .brands-section {
+    padding: 60px 6%;
   }
 
   .main-content {
@@ -515,7 +565,6 @@
     border-radius: 24px;
   }
 
-  /* Adaptación de flamas laterales en móvil */
   .phone-glow-left,
   .phone-glow-right {
     height: 100%;
