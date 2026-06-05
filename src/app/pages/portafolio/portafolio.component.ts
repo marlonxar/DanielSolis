@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 export interface ProjectMedia {
-  type: 'video' | 'image' | 'drive';
+  type: 'video' | 'image' | 'drive' | 'cloudinary';
   src: string;
 }
 
@@ -32,11 +32,16 @@ export class PortafolioComponent implements OnDestroy {
   constructor(private sanitizer: DomSanitizer) {}
 
   getSafeUrl(url: string): SafeResourceUrl {
-    const previewUrl = url
+    const driveUrl = url
       .replace('/view?usp=sharing', '/preview')
       .replace('/view?usp=drive_link', '/preview')
       .replace('/view', '/preview');
-    return this.sanitizer.bypassSecurityTrustResourceUrl(previewUrl);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(driveUrl);
+  }
+
+  getCloudinaryUrl(src: string): SafeResourceUrl {
+    const url = `https://player.cloudinary.com/embed/?cloud_name=dqn3tiikr&public_id=${src}&autoplay=true&muted=true&loop=true&controls=true&fluid=true`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   projects: Project[] = [
@@ -49,8 +54,8 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'La narrativa inicia con una llegada en helicóptero del fundador de la empresa, estableciendo inmediatamente una sensación de liderazgo, escala y autoridad. A partir de ahí, el video se transforma en una experiencia visual de alta intensidad que recorre toda la operación de Fénix Aduanal, desde contenedores y procesos logísticos hasta el ritmo acelerado del día a día en oficina, utilizando edición dinámica, tomas cinematográficas y una ejecución diseñada para mantener tensión e impacto en cada segundo.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1NWo7CQyDsnnlJPobSlAwYQpln9-rIBEp/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/16dgpe6vS0WBh29aFWKlQGcgfs59jn9cD/view?usp=drive_link' }
+        { type: 'cloudinary', src: 'Fénix_Aniversario_compressed_yempll' },
+        { type: 'cloudinary', src: 'EXPO_2026_compressed_b5fb0h' },
       ],
     },
     {
@@ -62,18 +67,18 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'Para Land Rover, desarrollamos contenido orientado hacia el lujo, sofisticación y experiencia premium, utilizando visuales más limpios y elegantes que refuerzan el posicionamiento exclusivo de la marca. En contraste, el contenido para Can-Am y Sea-Doo se enfoca en adrenalina, velocidad y aventura, creando piezas dinámicas diseñadas para transmitir energía, movimiento y estilo de vida outdoor.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1aeeBLuEBAxrCRcfCJ8oxZ7nYAJSX1CA4/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1rpiH5sbWbfsuvNlEg1dfK1tL-8VF6AWM/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1LrZKAsE9_R4NasG3QXRj5XHOGWL3wn4_/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1HPPBln364xYAoKy2IIfwtuxL2LlOsqaD/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1T6RVFOyDduxAKO93eA4iegJ7CYyGmT8d/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1DP9odXqZ_P6j9vSwJESUmrR77eAQCFJn/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1rG7ZgJOtPk2QN8xGQEjk_SbU0Nq9Ny0B/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1cOKP7SeO-QibcqtU7PpEKu4jG40oVxwP/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/193fJ9XW5_lt8UO2TY94vsLX4tzxqUzSa/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1eEm6ouRWlDuNG2f5o92v6mAHyzQgF020/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1Q5wZY4ZTpuCrKwIsK4BfnGB7pnTmmAhS/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1xxX2XcQ8HL6XT_wLm8c7cj0-sywP9XmI/view?usp=drive_link' }
+        { type: 'cloudinary', src: '3-LANDROVER_DEFENDER_duylim' },
+        { type: 'cloudinary', src: '3-LANDROVER_BRP_CANAM_MAVERICK_2_gewdh5' },
+        { type: 'cloudinary', src: 'MAVERICK_MAX_XRS_ih25wr' },
+        { type: 'cloudinary', src: 'Explorer_Pro_Corregido_ts5dbb' },
+        { type: 'cloudinary', src: '3-LAND_ROVER_DISCOVERY_compressed_jrtqae' },
+        { type: 'cloudinary', src: '3-LANDROVER_BRP_CAN-AM_MAVERICK_compressed_icofft' },
+        { type: 'cloudinary', src: 'expo_final_2026_compressed_ngyfzh' },
+        { type: 'cloudinary', src: '3-LAND_ROVER_VIDEO_COLOR_compressed_m0lqvk' },
+        { type: 'cloudinary', src: '3-LANDROVER_BRP_SEADOO_compressed_xwoglb' },
+        { type: 'cloudinary', src: 'RXPX_compressed_a2f8kq' },
+        { type: 'cloudinary', src: '3-LANDROVER_BRP_SEA-DOO_RXP_compressed_wzicso' },
+        { type: 'cloudinary', src: '3-LANDROVER_BRP_CAN-AM_OUTLANDERS_compressed_yfnmp6' },
       ],
     },
     {
@@ -85,10 +90,10 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'A través de contenido short-form, campañas visuales y storytelling enfocado en lifestyle tropical, el objetivo ha sido diferenciar la marca más allá del producto, creando una conexión emocional con consumidores jóvenes mediante una estética fresca, energética y auténtica.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1oEZwk0nGsABrm3KgoyTS25Es_W3a5jak/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1pdc4V5qjDDgjSKBBVgNjBbniJmSrjoRY/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1qBoSaXTQk2U7NGF1fAB7LR5zVin62rNI/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1Fijlp5_CiQ0SKE2RZc5vaPGUwT6q2M9k/view?usp=drive_link' }
+        { type: 'cloudinary', src: '2-GOLDEN_Video_Dentro_de_Caja_espectativa_jjbsnl' },
+        { type: 'cloudinary', src: '2-GOLDEN_Receta_Navidad_mug5yi' },
+        { type: 'cloudinary', src: '2-GOLDEN_Automercado_compressed_c5uk2v' },
+        { type: 'cloudinary', src: '2-GOLDEN_Video_distribuidores_compressed_k59l4m' },
       ],
     },
     {
@@ -100,12 +105,12 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'Combinando una dirección visual agresiva con edición rápida y una estética inspirada en el contenido deportivo de alto rendimiento, cada producción busca transmitir energía real: entrenamientos, movimiento, disciplina y actitud.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1cK4KgrEhp2JfixVOa4G49r-IITvgvV_2/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1g9v74gESmQve1bq6qczK0XlW3Oh_YyFL/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1R_VCvZAIgj-VIZ7Dz8CGCeYgKyaBgfpf/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1FuBbREBkUcO25vyFpqnaRYuFjxb8j_SR/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/16SxXzStkL5IFxgqF-92odqo-uDhdXGjw/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1KTrzTU879bbmo4H50LmzhRzfxnIX4bMh/view?usp=drive_link' }
+        { type: 'cloudinary', src: '5-FITBROS_SHAKER_Melhofit_smytkt' },
+        { type: 'cloudinary', src: '5-FITBROS_PROMO_SHIRT_tsztip' },
+        { type: 'cloudinary', src: '5-FITBROS_Clip_paños_prhmra' },
+        { type: 'cloudinary', src: '5-FITBROS_Batman_compressed_ujhofd' },
+        { type: 'cloudinary', src: '5-FITBROS_PROMO_KONTROLLED_compressed_v35or7' },
+        { type: 'cloudinary', src: '5-FITBROS_TUPROTE_compressed_hzswbu' },
       ],
     },
     {
@@ -117,12 +122,11 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'El enfoque va más allá de simplemente mostrar comida: cada escena es diseñada para generar antojo inmediato y elevar la percepción de calidad de la marca a través de contenido premium optimizado para plataformas digitales.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1MY47KNw7rFNqBtvoNN21Ceg682UOMDJn/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1wTBz2pLA3YDiCjblYxhbExjYpxzElxsQ/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1SvyAqbiSpbEAAGIXxRmQpNXZapnZeAEI/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1RTgULzBmNT2vLjlvjJ14ZwlgF4PngGTn/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1s1PlgQPAepn-x1NjcO80xqeWBf37xrN8/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1S_1GZ0jentwihU8fD618w1JA-9Er0akg/view?usp=drive_link' },
+        { type: 'cloudinary', src: '7-FOODSTYLING_3_dotrm7' },
+        { type: 'cloudinary', src: '7-FOODSTYLING_2_eh7bbl' },
+        { type: 'cloudinary', src: '7-EXXQUISITE_FOODSTYLING_a1oryw' },
+        { type: 'cloudinary', src: '7-EXXQUISITE_FOODSTYLING2_nbjomr' },
+        { type: 'cloudinary', src: '7-EXXQUISITE_FOODSTYLING_compressed_hypqxj' },
       ],
     },
     {
@@ -134,13 +138,11 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'A través de visuales cinematográficos, movimientos de cámara fluidos y una dirección enfocada en iluminación, amplitud y detalle arquitectónico, el contenido busca transmitir exclusividad, tranquilidad y conexión con el entorno natural.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1xT9eDtnxVdB9IUTbdLoTD4p5nspeyJp7/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1YsYfAgBsf9Qn55T_xZVj5mxBC5ZrIcpD/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1twMWRk_usXA01nu8176BQzjXRrLWdPfU/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1z-zj0-SmvoxbmolsX3ifBbCu5R6iLnfj/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1jemqKFHwMFSDaxLjPRBMqnHqJofGR67N/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1B2boWckc61kZRhDcB3gKsDWRYkL3Fpim/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1IHxKjQvtWNsoXnV9Ehlc8p5ZSiDETv7U/view?usp=drive_link' }
+        { type: 'cloudinary', src: '8-REAL_ESTATE_CASA_OSASIS_TAMARINDO_wtxrhg' },
+        { type: 'cloudinary', src: '8-REAL_ESTATE_CASA_AGAPANTO_u7p4hm' },
+        { type: 'cloudinary', src: '8-REAL_ESTATE_NUBIA_SERVICES_compressed_qtbvul' },
+        { type: 'cloudinary', src: 'Hoja_Libre_compressed_fqgr78' },
+        { type: 'cloudinary', src: '8-REAL_ESTATE_SOHO_compressed_pdbc2l' },
       ],
     },
     {
@@ -152,13 +154,12 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'Este formato se ha convertido en una herramienta clave de storytelling para diferentes marcas, permitiendo comunicar visión, procesos y personalidad de una manera mucho más cercana y humana.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1WdmK66DZzt88zML_8r_eTYqPXpgxYX-1/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1IAXhjaarLGa9Hxz8y5Xax8h1bcTZq1vS/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1TeGVPC982LByXmWmZRYlt8qK111UBAdQ/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1Mu_zWBFg6vjND9INI7xQ_zBcTr3G56Nm/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1y1m5TudojvSMirJtKXSn3RGgP91hNmh2/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1KS59WQkSAHrvC14xj3TzlHIt3vlzHdzB/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1t4DI8J6zClVYecPeuVVGiW7-TJCvtCVC/view?usp=drive_link' },
+        { type: 'cloudinary', src: '9-POCAST_TYPE_CLIP_1_eo1o5i' },
+        { type: 'cloudinary', src: '9-PODCAST_TYPE_CLIP_2_kkfsth' },
+        { type: 'cloudinary', src: '9-PODCAST_TYPE_CLIP_3_csuqn5' },
+        { type: 'cloudinary', src: '9-PODCAST_TYPE_CLIP_4_vux0tb' },
+        { type: 'cloudinary', src: '9-PODCAST_TYPE_CLIP_6_dge5xg' },
+        { type: 'cloudinary', src: 'Jack_Interview_compressed_k1cstg' },
       ],
     },
     {
@@ -170,12 +171,12 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'La estrategia combina videos educativos, contenido comparativo y piezas más orientadas a entretenimiento, utilizando edición rápida, storytelling directo y una línea visual limpia que mantiene el balance entre claridad y retención de audiencia.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1OiKJlsuuKHRI5FR4jRFjQc3tKuSv_vV_/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1eGBdsRWJrL6Akl24Ox2FN8b6PPuWqqFR/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1bPflfY8HTcyMsvm8Mw5mDFqPgyzDoLo-/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1DAFA7HKbt3Ec3GXAppHb7wZdWjJC6Ui39/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1t-WeWQp3lFOnRABN44NwB23dOoqbDDK8/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/16YYssxKr2xmHBoML_gMH4nC18GpUwm8K/view?usp=drive_link' },
+        { type: 'cloudinary', src: 'Monkey_Box_3_ik94jm' },
+        { type: 'cloudinary', src: '1-MONKEY_BOX_2_lgpszp' },
+        { type: 'cloudinary', src: 'Monkey_Box_3.2_compressed_sz4xhb' },
+        { type: 'cloudinary', src: 'Monkey_Box_2_Mayo_compressed_hazvsg' },
+        { type: 'cloudinary', src: '1-MONKEY_BOX_1_compressed_gemzt6' },
+        { type: 'cloudinary', src: 'Monkey_4_compressed_xmin9d' },
       ],
     },
     {
@@ -187,7 +188,11 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'A través de visuales limpios, dirección dinámica y una línea cinematográfica inspirada en fashion content, el objetivo ha sido elevar la presencia digital de la marca mientras se crea contenido diseñado para captar atención rápidamente.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1KTrzTU879bbmo4H50LmzhRzfxnIX4bMh/view?usp=drive_link' },
+        { type: 'cloudinary', src: '4-DLABUTIK2_Fashion_compressed_rtxfqb' },
+        { type: 'cloudinary', src: '4-DLABUTIK_Fashion_compressed_dnsuaj' },
+        { type: 'cloudinary', src: '4-DLABUTIK4_Fashion_compressed_y45ysz' },
+        { type: 'cloudinary', src: '4-DLABUTIK5_Fashion_compressed_gaykpd' },
+        { type: 'cloudinary', src: '4-DLABUTIK1_Fashion_compressed_gvcppv' },
       ],
     },
     {
@@ -199,8 +204,8 @@ export class PortafolioComponent implements OnDestroy {
       description:
         'A través de visuales cinematográficos, edición dinámica y tomas enfocadas en crowd reaction, iluminación y movimiento, cada pieza busca transmitir la intensidad del momento.',
       media: [
-        { type: 'drive', src: 'https://drive.google.com/file/d/1Rr-D51hwSTENId5f5EgrPWUsCGJj0280/view?usp=drive_link' },
-        { type: 'drive', src: 'https://drive.google.com/file/d/1fKQMmsFSt3nXS5vMB6c3bxVLm0D7cRlN/view?usp=drive_link' },
+        { type: 'cloudinary', src: 'EventsVideo1' },
+        { type: 'cloudinary', src: '6-ZOUK_CUMPLEANOS_compressed_dtv1ty' },
       ],
     },
   ];
