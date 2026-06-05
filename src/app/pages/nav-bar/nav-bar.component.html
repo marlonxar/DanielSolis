@@ -1,88 +1,74 @@
-<!-- ============================================================
-     NAVBAR COMPONENT — leeway.media style
-     Layout: [Nav Links Left] [Logo Center] [Icons Right]
-     Behavior: transparent → frosted on scroll | hamburger mobile
-     ============================================================ -->
+<nav class="navbar" [class.navbar--scrolled]="isScrolled" [class.navbar--open]="menuOpen">
 
-     <nav class="navbar" [class.navbar--scrolled]="isScrolled" [class.navbar--open]="menuOpen">
+  <div class="navbar__inner">
 
-        <!-- Desktop layout -->
-        <div class="navbar__inner">
-      
-          <!-- Left: nav links -->
-          <ul class="navbar__links navbar__links--left">
-            <li *ngFor="let item of leftLinks">
-              <a [routerLink]="item.path"
-                 routerLinkActive="navbar__link--active"
-                 [routerLinkActiveOptions]="{ exact: item.exact }"
-                 class="navbar__link">{{ item.label }}</a>
-            </li>
-          </ul>
-      
-          <!-- Center: logo image -->
-          <a routerLink="/" class="navbar__logo" aria-label="Home">
-            <img src="assets/images/DanielSolistLogo.png" alt="Logo" class="navbar__logo-img" />
-          </a>
-      
-          <!-- Right: social icons + hamburger -->
-          <div class="navbar__right">
-      
-            <!-- Social icons — desktop only -->
-            <div class="navbar__icons">
-              <a href="https://www.instagram.com/danielsolis.co/" target="_blank" rel="noopener" aria-label="Instagram" class="navbar__icon-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5"/>
-                  <circle cx="12" cy="12" r="5"/>
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                </svg>
-              </a>
-              <a href="mailto:dsolisbarrantes@gmail.com" aria-label="Email" class="navbar__icon-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/>
-                  <path d="M2 8l10 6 10-6"/>
-                </svg>
-              </a>
-            </div>
-      
-            <!-- Hamburger — mobile only -->
-            <button class="navbar__hamburger"
-                    (click)="toggleMenu()"
-                    [class.is-open]="menuOpen"
-                    aria-label="Toggle menu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-      
-          </div>
-        </div>
-      
-        <!-- Mobile drawer -->
-        <div class="navbar__drawer" [class.drawer--open]="menuOpen">
-          <ul class="drawer__links">
-            <li *ngFor="let item of allLinks; let i = index"
-                [style.animation-delay]="(i * 0.07 + 0.1) + 's'">
-              <a [routerLink]="item.path"
-                 class="drawer__link"
-                 (click)="closeMenu()">{{ item.label }}</a>
-            </li>
-          </ul>
-      
-          <div class="drawer__footer">
-            <a href="https://www.instagram.com/danielsolis.co/" target="_blank" rel="noopener" class="navbar__icon-link">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5"/>
-                <circle cx="12" cy="12" r="5"/>
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-              </svg>
-            </a>
-            <a href="mailto:dsolisbarrantes@gmail.com" class="navbar__icon-link">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                <path d="M2 8l10 6 10-6"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      
-      </nav>
+    <ul class="navbar__links navbar__links--left">
+      <li *ngFor="let item of leftLinks">
+        <a [routerLink]="item.path"
+           routerLinkActive="navbar__link--active"
+           [routerLinkActiveOptions]="{ exact: item.exact }"
+           class="navbar__link">{{ item.label }}</a>
+      </li>
+    </ul>
+
+    <a routerLink="/" class="navbar__logo" aria-label="Home">
+      <img src="assets/images/DanielSolistLogo.png" alt="Logo" class="navbar__logo-img" />
+    </a>
+
+    <div class="navbar__right">
+      <div class="navbar__icons">
+        <a href="https://www.instagram.com/danielsolis.co/" target="_blank" rel="noopener" aria-label="Instagram" class="navbar__icon-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="mailto:dsolisbarrantes@gmail.com" aria-label="Email" class="navbar__icon-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 8l10 6 10-6"/>
+          </svg>
+        </a>
+      </div>
+
+      <button class="navbar__hamburger"
+              (click)="toggleMenu()"
+              [class.is-open]="menuOpen"
+              aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <div class="navbar__drawer" [class.drawer--open]="menuOpen">
+    <ul class="drawer__links">
+      <li *ngFor="let item of allLinks; let i = index"
+          [style.animation-delay]="(i * 0.07 + 0.1) + 's'">
+        <a [routerLink]="item.path"
+           class="drawer__link"
+           (click)="closeMenu()">{{ item.label }}</a>
+      </li>
+    </ul>
+
+    <div class="drawer__footer">
+      <a href="https://www.instagram.com/danielsolis.co/" target="_blank" rel="noopener" class="navbar__icon-link">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="mailto:dsolisbarrantes@gmail.com" class="navbar__icon-link">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M2 8l10 6 10-6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</nav>

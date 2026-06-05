@@ -63,9 +63,7 @@
   @media (max-width: 480px) { padding: 2rem 5% 0; }
 }
 
-.header-inner {
-  max-width: 1400px;
-}
+.header-inner { max-width: 1400px; }
 
 .portfolio-eyebrow {
   display: block;
@@ -88,6 +86,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0 0.15em;
+
+  @media (max-width: 768px) { font-size: 3rem; }
+  @media (max-width: 480px) { font-size: 2.4rem; }
 }
 
 .title-word {
@@ -152,9 +153,7 @@
   border-top: 1px solid var(--border);
   border-left: 1px solid var(--border);
 
-  @media (max-width: 560px) {
-    grid-template-columns: 1fr;
-  }
+  @media (max-width: 560px) { grid-template-columns: 1fr; }
 }
 
 .project-card {
@@ -175,9 +174,7 @@
   }
 
   &:hover,
-  &:focus-visible {
-    background: var(--surface-2);
-  }
+  &:focus-visible { background: var(--surface-2); }
 }
 
 .card-index {
@@ -343,6 +340,8 @@
   .project-card:focus-visible & { width: 100%; }
 }
 
+// ── POPUP ──────────────────────────────────────────────────────
+
 .project-popup {
   position: fixed;
   inset: 0;
@@ -446,17 +445,9 @@
   }
 }
 
-.slide-media--iframe {
-  pointer-events: all;
-  position: relative;
-  z-index: 1;
-}
-
-.popup-close {
-  position: absolute;
-  top: 1.1rem;
-  left: 1.1rem;
-  z-index: 20;
+// Estilos base compartidos para ambos close
+.popup-close--desktop,
+.popup-close--mobile {
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -467,6 +458,7 @@
   color: rgba(255,255,255,0.35);
   cursor: pointer;
   transition: color 0.2s, background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
 
   span {
     font-family: 'Barlow Condensed', sans-serif;
@@ -486,16 +478,26 @@
     outline: 2px solid var(--gold);
     outline-offset: 2px;
   }
-
-  @media (max-width: 700px) {
-    // En mobile el close queda debajo de los slider-mobile-controls,
-    // así que lo posicionamos relativo al info panel normal
-    top: 0.85rem;
-    left: 0.85rem;
-  }
 }
 
-// Barra de controles pegada justo debajo del video en mobile
+// Close desktop: absolute top-left, oculto en mobile
+.popup-close--desktop {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  z-index: 20;
+
+  @media (max-width: 700px) { display: none; }
+}
+
+// Close mobile: dentro de la barra de controles, oculto en desktop
+.popup-close--mobile {
+  display: none;
+
+  @media (max-width: 700px) { display: flex; }
+}
+
+// Barra de controles mobile pegada arriba del info panel (justo debajo del video)
 .slider-mobile-controls {
   display: none;
 
@@ -503,11 +505,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     flex-shrink: 0;
     gap: 0.5rem;
-    order: -1; // lo empuja al tope del flex column del info panel
+    order: -1;
+  }
+}
+
+// Barra para proyectos con solo 1 media
+.single-media-mobile-bar {
+  display: none;
+
+  @media (max-width: 700px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    flex-shrink: 0;
+    order: -1;
   }
 }
 
@@ -536,7 +553,7 @@
   }
 
   @media (max-width: 700px) {
-    padding: 1rem 1.6rem 2rem; // sin padding-top extra, el close ya tiene su espacio
+    padding: 1rem 1.6rem 2rem;
   }
 }
 
@@ -546,9 +563,7 @@
   justify-content: space-between;
   margin-bottom: 2rem;
 
-  @media (max-width: 700px) {
-    margin-top: 2.5rem; // espacio para el botón close absolute
-  }
+  @media (max-width: 700px) { margin-top: 2.5rem; }
 }
 
 .popup-logo {
@@ -582,9 +597,7 @@
   }
 }
 
-.popup-title-block {
-  margin-bottom: 1.4rem;
-}
+.popup-title-block { margin-bottom: 1.4rem; }
 
 .popup-title {
   font-family: 'Barlow Condensed', sans-serif;
@@ -623,9 +636,7 @@
   letter-spacing: 0.01em;
 }
 
-.popup-footer-space {
-  height: 1.5rem;
-}
+.popup-footer-space { height: 1.5rem; }
 
 .popup-media-panel {
   flex: 0 0 auto;
@@ -642,6 +653,7 @@
     min-height: 240px;
     max-height: 320px;
     flex: 0 0 auto;
+    position: relative;
     z-index: 2;
   }
 }
@@ -671,6 +683,12 @@
   display: block;
 }
 
+.slide-media--iframe {
+  pointer-events: all;
+  position: relative;
+  z-index: 1;
+}
+
 .slider-btn {
   display: flex;
   align-items: center;
@@ -698,9 +716,7 @@
     &.slider-btn--prev { left: 0.5rem; }
     &.slider-btn--next { right: 0.5rem; }
 
-    @media (max-width: 700px) {
-      display: none;
-    }
+    @media (max-width: 700px) { display: none; }
   }
 }
 
@@ -717,9 +733,7 @@
   border-radius: 2px;
   border: 1px solid rgba(255,255,255,0.05);
 
-  @media (max-width: 700px) {
-    display: none;
-  }
+  @media (max-width: 700px) { display: none; }
 }
 
 .slider-dots {
@@ -734,9 +748,7 @@
     transform: translateX(-50%);
     z-index: 20;
 
-    @media (max-width: 700px) {
-      display: none;
-    }
+    @media (max-width: 700px) { display: none; }
   }
 }
 

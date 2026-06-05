@@ -86,8 +86,9 @@
 
     <div class="popup-info-panel">
 
+      <!-- Close desktop -->
       <button
-        class="popup-close"
+        class="popup-close popup-close--desktop"
         (click)="closeProject()"
         aria-label="Cerrar proyecto"
         type="button"
@@ -99,7 +100,7 @@
         <span>ESC</span>
       </button>
 
-      <!-- Controles del slider: solo en mobile, pegados arriba del info panel (justo debajo del video) -->
+      <!-- Controles mobile: prev | dots | counter | next | salir -->
       <div
         class="slider-mobile-controls"
         *ngIf="activeProject.media.length > 1"
@@ -146,6 +147,35 @@
             <polyline points="9 18 15 12 9 6"/>
           </svg>
         </button>
+
+        <button
+          class="popup-close popup-close--mobile"
+          (click)="closeProject()"
+          aria-label="Cerrar proyecto"
+          type="button"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          <span>Salir</span>
+        </button>
+      </div>
+
+      <!-- Barra mobile cuando solo hay 1 media -->
+      <div class="single-media-mobile-bar" *ngIf="activeProject.media.length === 1">
+        <button
+          class="popup-close popup-close--mobile"
+          (click)="closeProject()"
+          aria-label="Cerrar proyecto"
+          type="button"
+        >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          <span>Salir</span>
+        </button>
       </div>
 
       <div class="popup-info-scroll">
@@ -181,7 +211,6 @@
             *ngFor="let media of activeProject.media; let i = index; trackBy: trackBySlide"
             [attr.aria-hidden]="i !== sliderIndex"
           >
-
             <video
               *ngIf="media.type === 'video'"
               [src]="media.src"
@@ -207,11 +236,10 @@
               allow="autoplay"
               [attr.aria-label]="activeProject.name + ' video ' + (i + 1)"
             ></iframe>
-
           </div>
         </div>
 
-        <!-- Controles solo en desktop -->
+        <!-- Controles solo desktop -->
         <button
           class="slider-btn slider-btn--prev slider-btn--desktop"
           (click)="prevSlide()"
