@@ -7,6 +7,24 @@
   display: block;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--gold);
+  color: #000;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s ease;
+
+  &:focus { top: 0; }
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -80,6 +98,7 @@
 
   &:hover::after { width: 100%; }
   &--active::after { width: 100%; }
+  &:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
 }
 
 .navbar__logo {
@@ -138,19 +157,23 @@
   text-decoration: none;
 
   &:hover { color: rgba(255,255,255,0.6); }
+  &:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
 }
 
 .navbar__hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
-  width: 30px;
-  height: 30px;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+
+  &:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
 
   @media (max-width: 768px) { display: flex; }
 
@@ -235,6 +258,7 @@
   transition: color 0.2s ease;
 
   &:hover { color: var(--gold); }
+  &:focus-visible { color: var(--gold); outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
 }
 
 .drawer__footer {

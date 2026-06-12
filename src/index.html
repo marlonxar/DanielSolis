@@ -125,6 +125,29 @@
         "description": "Estrategia, producción y posicionamiento para tu marca en Costa Rica.",
         "inLanguage": "es-CR",
         "publisher": { "@id": "https://www.daniel-solis.com/#person" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio",     "item": "https://www.daniel-solis.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Portafolio", "item": "https://www.daniel-solis.com/portafolio" },
+          { "@type": "ListItem", "position": 3, "name": "Contacto",   "item": "https://www.daniel-solis.com/contacto" }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.daniel-solis.com/#service-shortform",
+        "name": "Sistema mensual de Short-Form Content",
+        "description": "Producción mensual de videos cortos con dirección creativa para fortalecer la identidad visual de marcas en redes sociales. Incluye estrategia, filmación y edición.",
+        "provider": { "@id": "https://www.daniel-solis.com/#business" },
+        "areaServed": { "@type": "Country", "name": "Costa Rica" },
+        "serviceType": "Producción de contenido digital",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.daniel-solis.com/contacto"
+        }
       }
     ]
   }
@@ -143,11 +166,20 @@
   <!-- Web App Manifest -->
   <link rel="manifest" href="manifest.webmanifest">
 
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="es" href="https://www.daniel-solis.com/">
+  <link rel="alternate" hreflang="x-default" href="https://www.daniel-solis.com/">
+
   <!-- Performance -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//www.youtube.com">
+  <link rel="dns-prefetch" href="//drive.google.com">
   <link rel="preconnect"   href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect"   href="https://fonts.gstatic.com"    crossorigin>
+  <link rel="preconnect"   href="https://www.youtube.com"      crossorigin>
+  <link rel="preconnect"   href="https://drive.google.com"     crossorigin>
+  <link rel="preload"      href="assets/fonts/DrukWideBold.ttf" as="font" type="font/truetype" crossorigin>
 
 </head>
 <body>
