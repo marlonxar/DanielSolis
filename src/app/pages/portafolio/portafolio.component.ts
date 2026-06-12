@@ -28,7 +28,6 @@ export class PortafolioComponent implements OnDestroy {
   sliderIndex = 0;
   isClosing = false;
   forceReload = 0;
-  driveHintDismissed = false;
 
   private readonly _urlCache = new Map<string, SafeResourceUrl>();
 
@@ -219,16 +218,11 @@ export class PortafolioComponent implements OnDestroy {
     },
   ];
 
-  dismissDriveHint(): void {
-    this.driveHintDismissed = true;
-  }
-
   openProject(project: Project): void {
     this.activeProject = project;
     this.sliderIndex = 0;
     this.isClosing = false;
     this.forceReload = 0;
-    this.driveHintDismissed = false;
     document.body.style.overflow = 'hidden';
   }
 
@@ -258,7 +252,6 @@ export class PortafolioComponent implements OnDestroy {
     if (this.activeProject && this.sliderIndex < this.activeProject.media.length - 1) {
       this.sliderIndex++;
       this.forceReload++;
-      this.driveHintDismissed = false;
     }
   }
 
@@ -266,7 +259,6 @@ export class PortafolioComponent implements OnDestroy {
     if (this.sliderIndex > 0) {
       this.sliderIndex--;
       this.forceReload++;
-      this.driveHintDismissed = false;
     }
   }
 
