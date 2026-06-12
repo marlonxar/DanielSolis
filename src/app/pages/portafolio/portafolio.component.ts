@@ -39,8 +39,8 @@ export class PortafolioComponent implements OnDestroy {
 
     const id = url.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1];
     const embedUrl = id
-      ? `https://drive.google.com/file/d/${id}/preview`
-      : url.replace(/\/view(\?.*)?$/, '/preview');
+      ? `https://drive.google.com/file/d/${id}/preview?autoplay=1`
+      : url.replace(/\/view(\?.*)?$/, '/preview') + '?autoplay=1';
 
     const safe = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
     this._urlCache.set(url, safe);
