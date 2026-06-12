@@ -29,19 +29,32 @@ export class PortafolioComponent implements OnDestroy {
   isClosing = false;
   forceReload = 0;
 
+  private readonly _urlCache = new Map<string, SafeResourceUrl>();
+
   constructor(private sanitizer: DomSanitizer) {}
 
   getSafeUrl(url: string): SafeResourceUrl {
-    const driveUrl = url
-      .replace('/view?usp=sharing', '/preview')
-      .replace('/view?usp=drive_link', '/preview')
-      .replace('/view', '/preview');
-    return this.sanitizer.bypassSecurityTrustResourceUrl(driveUrl + '?autoplay=1');
+    const cached = this._urlCache.get(url);
+    if (cached) return cached;
+
+    const id = url.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1];
+    const embedUrl = id
+      ? `https://drive.google.com/file/d/${id}/preview`
+      : url.replace(/\/view(\?.*)?$/, '/preview');
+
+    const safe = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    this._urlCache.set(url, safe);
+    return safe;
   }
 
   getYoutubeUrl(videoId: string): SafeResourceUrl {
+    const cached = this._urlCache.get(videoId);
+    if (cached) return cached;
+
     const url = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&rel=0`;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    const safe = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    this._urlCache.set(videoId, safe);
+    return safe;
   }
 
 
