@@ -265,7 +265,6 @@ export class PortafolioComponent implements OnDestroy {
   goToSlide(index: number): void {
     this.sliderIndex = index;
     this.forceReload++;
-    this.driveHintDismissed = false;
   }
 
   trackBySlide(index: number): string {
