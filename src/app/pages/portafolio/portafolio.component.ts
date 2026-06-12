@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 export interface ProjectMedia {
-  type: 'video' | 'image' | 'drive' | 'cloudinary' | 'youtube';
+  type: 'video' | 'image' | 'drive' | 'youtube';
   src: string;
 }
 
@@ -44,18 +44,6 @@ export class PortafolioComponent implements OnDestroy {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  getDriveVideoUrl(url: string): SafeResourceUrl {
-    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)\//);
-    const directUrl = match
-      ? `https://drive.google.com/uc?export=download&confirm=t&id=${match[1]}`
-      : url;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(directUrl);
-  }
-
-  getCloudinaryUrl(src: string): SafeResourceUrl {
-    const url = `https://player.cloudinary.com/embed/?cloud_name=dqn3tiikr&public_id=${src}&autoplay=true&muted=true&loop=true&controls=true&fluid=true`;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
 
   projects: Project[] = [
     {

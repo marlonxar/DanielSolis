@@ -253,16 +253,6 @@
               [attr.aria-label]="activeProject.name + ' video ' + (i + 1)"
             ></iframe>
 
-            <!-- Cloudinary -->
-            <iframe
-              *ngIf="media.type === 'cloudinary' && i === sliderIndex"
-              [src]="getCloudinaryUrl(media.src)"
-              class="slide-media slide-media--iframe"
-              frameborder="0"
-              allowfullscreen
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-              [attr.aria-label]="activeProject.name + ' video ' + (i + 1)"
-            ></iframe>
           </div>
         </div>
 
