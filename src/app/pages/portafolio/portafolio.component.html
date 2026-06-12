@@ -241,6 +241,20 @@
               [attr.aria-label]="activeProject.name + ' video ' + (i + 1)"
             ></iframe>
 
+            <!-- Hint tap-to-play (Drive · mobile only) -->
+            <div
+              *ngIf="media.type === 'drive' && i === sliderIndex && !driveHintDismissed"
+              class="drive-tap-hint"
+              (click)="dismissDriveHint()"
+              aria-hidden="true"
+            >
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.55)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                <polygon points="10,8 17,12 10,16" fill="white"/>
+              </svg>
+              <span class="drive-tap-hint__label">Toca para reproducir</span>
+            </div>
+
             <!-- YouTube -->
             <iframe
               *ngIf="media.type === 'youtube' && i === sliderIndex"
