@@ -1,6 +1,7 @@
 <!-- Film backdrop — consistente con el resto del sitio -->
 <div class="film-backdrop" aria-hidden="true">
-    <video autoplay muted loop playsinline class="film-video">
+    <video autoplay [muted]="true" loop playsinline preload="auto"
+           poster="assets/images/film-grain-poster.jpg" class="film-video">
       <source src="assets/videos/film-grain.mp4" type="video/mp4" />
     </video>
     <div class="film-vignette"></div>

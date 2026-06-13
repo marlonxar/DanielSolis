@@ -2,7 +2,8 @@
 
 <main class="retro-container" id="main-content">
   <div class="film-backdrop">
-    <video #filmVideo autoplay muted loop playsinline class="film-video">
+    <video #filmVideo autoplay [muted]="true" loop playsinline preload="auto"
+           poster="assets/images/film-grain-poster.jpg" class="film-video">
       <source src="assets/videos/film-grain.mp4" type="video/mp4" />
     </video>
     <div class="film-vignette"></div>
@@ -27,10 +28,11 @@
             <video
               #instagramVideo
               autoplay
-              muted="true"
               [muted]="true"
               loop
               playsinline
+              preload="auto"
+              poster="assets/images/home-poster.jpg"
               class="instagram-video"
             >
               <source src="assets/videos/home.mp4" type="video/mp4" />
