@@ -230,19 +230,6 @@
               loading="lazy"
             />
 
-            <!-- Google Drive -->
-            <iframe
-              *ngIf="media.type === 'drive' && i === sliderIndex"
-              [src]="getSafeUrl(media.src)"
-              class="slide-media slide-media--iframe"
-              frameborder="0"
-              allowfullscreen
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-              [title]="activeProject.name + ' — video ' + (i + 1)"
-              [attr.aria-label]="activeProject.name + ' video ' + (i + 1)"
-            ></iframe>
-
-
             <!-- YouTube -->
             <iframe
               *ngIf="media.type === 'youtube' && i === sliderIndex"
