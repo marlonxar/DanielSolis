@@ -41,6 +41,14 @@
 
         <div class="card-logo-zone">
           <img
+            *ngIf="project.bg"
+            [src]="project.bg"
+            [alt]="project.name"
+            class="card-bg-img"
+            loading="lazy"
+          />
+          <img
+            *ngIf="!project.bg"
             [src]="project.logo"
             [alt]="project.name + ' logo'"
             class="card-logo"
@@ -58,7 +66,7 @@
           </svg>
         </div>
 
-        <div class="card-info">
+        <div class="card-info" *ngIf="!project.bg">
           <div class="card-info__left">
             <span class="card-name">{{ project.name }}</span>
             <span class="card-tagline">{{ project.tagline }}</span>
