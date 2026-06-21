@@ -47,6 +47,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.isScrolled = window.scrollY > 50;
   }
 
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.menuOpen) {
+      this.closeMenu();
+      document.querySelector<HTMLElement>('.navbar__hamburger')?.focus();
+    }
+  }
+
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
     document.body.style.overflow = this.menuOpen ? 'hidden' : '';

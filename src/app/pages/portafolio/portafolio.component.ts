@@ -1,5 +1,4 @@
 import { Component, HostListener, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 export interface ProjectMedia {
@@ -205,6 +204,7 @@ export class PortafolioComponent implements OnDestroy {
       name: 'Eventos',
       year: '2026',
       logo: 'assets/images/PartiesEvents.png',
+      bg: 'assets/images/parties.png',
       tagline: 'Eventos · Fiestas · Crowd Energy',
       description: `A través de <strong>visuales cinematográficos, edición dinámica</strong> y tomas enfocadas en crowd reaction, iluminación y movimiento, cada pieza busca transmitir la intensidad del momento mientras se genera contenido diseñado para aumentar expectativa, fortalecer presencia digital y mantener una conexión constante con la audiencia en redes sociales.`,
       media: [
@@ -220,6 +220,11 @@ export class PortafolioComponent implements OnDestroy {
     this.isClosing = false;
     this.forceReload = 0;
     document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      const btn = document.querySelector<HTMLElement>('.popup-close--desktop') ??
+                  document.querySelector<HTMLElement>('.popup-close--mobile');
+      btn?.focus();
+    }, 50);
   }
 
   closeProject(): void {

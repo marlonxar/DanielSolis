@@ -66,7 +66,7 @@
           </svg>
         </div>
 
-        <div class="card-info" *ngIf="!project.bg">
+        <div class="card-info">
           <div class="card-info__left">
             <span class="card-name">{{ project.name }}</span>
             <span class="card-tagline">{{ project.tagline }}</span>
@@ -141,7 +141,7 @@
           ></button>
         </div>
 
-        <span class="slider-counter-mobile">
+        <span class="slider-counter-mobile" aria-live="polite" aria-atomic="true">
           {{ sliderIndex + 1 }}&thinsp;/&thinsp;{{ activeProject.media.length }}
         </span>
 

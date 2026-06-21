@@ -15,6 +15,7 @@ const routes: Routes = [
     title: 'Daniel Solís — Creative Marketer | Producción Audiovisual CR',
     data: {
       description: 'Dirección creativa, producción audiovisual y estrategia de contenido en Costa Rica.',
+      ogTitle: 'Daniel Solís | Estrategia que vende. Contenido que impacta.',
     },
   },
 
@@ -24,7 +25,8 @@ const routes: Routes = [
     component: PortafolioComponent,
     title: 'Portafolio — Daniel Solís | Producción Audiovisual CR',
     data: {
-      description: 'Proyectos de video corporativo, contenido digital y dirección creativa en Costa Rica.',
+      description: 'Proyectos de video corporativo, contenido para redes sociales y dirección creativa en Costa Rica. Fénix Aduanal, GMB, Golden Pacific y más.',
+      ogTitle: 'Portafolio — Daniel Solís | Dirección Creativa Costa Rica',
     },
   },
 
@@ -34,7 +36,8 @@ const routes: Routes = [
     component: ContactoComponent,
     title: 'Contacto — Daniel Solís | Producción Audiovisual CR',
     data: {
-      description: 'Reserva una llamada y hablemos de tu próximo proyecto audiovisual.',
+      description: 'Reserva una llamada de 20 minutos gratis y hablemos de tu próximo proyecto. Respuesta en menos de 24 horas.',
+      ogTitle: 'Contacto — Daniel Solís | Hablemos de tu proyecto',
     },
   },
 

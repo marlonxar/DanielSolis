@@ -605,6 +605,11 @@
   transform: translateY(-2px);
 }
 
+.cta-final-btn:focus-visible {
+  outline: 3px solid #ebd105;
+  outline-offset: 3px;
+}
+
 /* --- RESPONSIVE TABLETS --- */
 @media (max-width: 1024px) {
   .main-content {
@@ -728,5 +733,70 @@
 
   .marquee-strip {
     padding: 0.8rem 0;
+  }
+}
+
+/* --- RESPONSIVE SMALL MOBILE (< 480px) --- */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 80px 5% 32px 5%;
+    gap: 36px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 11vw, 3.2rem);
+  }
+
+  .phone-frame {
+    width: 82vw;
+    height: 145.8vw;
+    max-width: 300px;
+    max-height: 534px;
+  }
+
+  .framework-circles {
+    gap: 12px;
+  }
+
+  .fw-circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .cta-final-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-final-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}
+
+/* --- LANDSCAPE MOBILE --- */
+@media (max-width: 768px) and (max-height: 500px) {
+  .hero-section {
+    min-height: 100vh;
+  }
+
+  .main-content {
+    flex-direction: row;
+    padding: 40px 5% 20px 5%;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .phone-frame {
+    width: 40vw;
+    height: 71vw;
+    max-width: 220px;
+    max-height: 390px;
+  }
+
+  .content-wrapper {
+    text-align: left;
+    align-items: flex-start;
   }
 }
