@@ -780,8 +780,13 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
+    transition: bottom 0.2s ease;
 
     @media (max-width: 700px) { display: none; }
+
+    .popup-media-panel--portrait & {
+      bottom: 3.5rem;
+    }
   }
 }
 

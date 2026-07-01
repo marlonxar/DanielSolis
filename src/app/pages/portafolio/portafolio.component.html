@@ -222,7 +222,7 @@
           >
             <!-- Video Bunny CDN -->
             <video
-              *ngIf="media.type === 'video'"
+              *ngIf="media.type === 'video' && i === sliderIndex"
               [src]="media.src"
               autoplay
               [muted]="true"
