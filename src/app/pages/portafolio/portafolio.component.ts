@@ -105,7 +105,7 @@ export class PortafolioComponent implements OnDestroy {
       tagline: 'Fitness · Cultura · Costa Rica',
       description: `Con <strong>Fitbros</strong> creamos contenido diseñado para reflejar la <strong>intensidad y mentalidad</strong> detrás de la cultura fitness. Más allá de presentar productos, el enfoque ha sido construir una marca con personalidad propia, tica y utilizando contenido dinámico y visualmente impactante que conecta directamente con una audiencia joven y competitiva.<br><br>Combinando una <strong>dirección visual agresiva</strong> con edición rápida y una estética inspirada en el contenido deportivo de alto rendimiento, cada producción busca transmitir energía real: entrenamientos, movimiento, disciplina y actitud. El resultado son piezas creadas para captar atención de inmediato y reforzar la presencia de la marca dentro del mercado fitness costarricense.<br><br>A través de contenido constante para redes sociales, Fitbros ha logrado mantener una <strong>identidad visual sólida y reconocible</strong>, construyendo una comunidad que no solo consume la marca, sino que se identifica con el estilo de vida que representa.`,
       media: [
-        { type: 'youtube', src: 'RpmMDb-OvJA' },
+        { type: 'video', src: 'https://vectis-daniel-solis.b-cdn.net/Fitbros%20%234/1-FITBROS%20TUPROTE.MP4' },
         { type: 'youtube', src: 'E3ab4YDiDng' },
         { type: 'youtube', src: '5T7vK4yy2SM' },
         { type: 'youtube', src: 'XMkxaoJkZ-o' },
