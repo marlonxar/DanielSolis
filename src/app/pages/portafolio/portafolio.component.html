@@ -208,7 +208,7 @@
 
     </div>
 
-    <div class="popup-media-panel">
+    <div class="popup-media-panel" [class.popup-media-panel--portrait]="currentMediaIsPortrait">
       <div class="popup-media" role="region" aria-label="Galería de medios">
 
         <div
@@ -229,6 +229,7 @@
               loop
               playsinline
               controls
+              controlsList="nodownload"
               class="slide-media slide-media--video"
               [attr.aria-label]="activeProject.name + ' video ' + (i + 1)"
             ></video>

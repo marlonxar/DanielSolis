@@ -672,6 +672,15 @@
     flex: 0 0 auto;
     position: relative;
     z-index: 2;
+    transition: height 0.3s ease, max-height 0.3s ease;
+  }
+
+  &--portrait {
+    @media (max-width: 700px) {
+      height: 80vw;
+      min-height: 300px;
+      max-height: 460px;
+    }
   }
 }
 
