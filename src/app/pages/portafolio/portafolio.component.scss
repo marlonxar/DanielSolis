@@ -707,6 +707,11 @@
   z-index: 1;
 }
 
+.slide-media--video {
+  object-fit: contain;
+  background: #000;
+}
+
 
 .slider-btn {
   display: flex;

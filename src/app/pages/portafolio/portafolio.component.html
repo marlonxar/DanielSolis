@@ -220,12 +220,16 @@
             *ngFor="let media of activeProject.media; let i = index; trackBy: trackBySlide"
             [attr.aria-hidden]="i !== sliderIndex"
           >
-            <!-- Video local -->
+            <!-- Video Bunny CDN -->
             <video
               *ngIf="media.type === 'video'"
               [src]="media.src"
-              autoplay muted loop playsinline
-              class="slide-media"
+              autoplay
+              [muted]="true"
+              loop
+              playsinline
+              controls
+              class="slide-media slide-media--video"
               [attr.aria-label]="activeProject.name + ' video ' + (i + 1)"
             ></video>
 
